@@ -1,0 +1,21 @@
+<div class="pages new">
+  <div class="row">
+    <%= error_messages_for(@page) %>
+  </div>
+  <h2>Add Page</h2>
+
+
+    <%= form_for(:page, :url => {:action => 'create', :book_id => @book.id}, :html => { :role => "form", :class => "form-horizontal", :multipart => "true" }) do |f| %>
+
+      <!-- Main form -->
+      <div class="row">
+        <%= render(:partial => "form", :locals => {:f => f, :book_id => @book.id, :new_pos => @new_default_position, :max_pos => @new_default_position, :is_edit => @is_edit}) %>
+      </div>
+
+      <!-- Submit button line -->
+      <div class="row">
+        <%= render(:partial => "submitbtn", :locals => {:f => f, :cancel_action => 'index', :submit_text => "Create Page", :book_id => @book.id}) %>
+      </div>
+    <% end %>
+
+</div>

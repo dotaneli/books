@@ -1,0 +1,21 @@
+<div class="books edit">
+  <div class="row">
+    <%= error_messages_for(@book) %>
+  </div>
+  <h2>Edit Book</h2>
+
+
+    <%= form_for(:book, :url => {:action => 'update', :id => @book.id}, :html => { :role => "form", :class => "form-horizontal" }) do |f| %>
+
+      <!-- Main form -->
+      <div class="row">
+        <%= render(:partial => "form", :locals => {:f => f}) %>
+      </div>
+
+      <!-- Submit button line -->
+      <div class="row">
+        <%= render(:partial => "submitbtn", :locals => {:f => f, :cancel_action => 'index', :submit_text => "Apply Changes"}) %>
+      </div>
+    <% end %>
+
+</div>

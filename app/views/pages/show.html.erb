@@ -1,0 +1,28 @@
+<div class="pages show">
+  <div class="row">
+    <%= error_messages_for(@page) %>
+  </div>
+  <h2><%= @page.book.name %>, <strong>P. #<%= @page.position %></strong></h2>
+
+
+
+  <!-- Main form -->
+
+  <div class="col-sm-9">
+    <div class="row">
+      <%= image_tag (@page.page_image.url(:original)) %>
+    </div>
+
+    <div class="row">
+      <p></p>
+    </div>
+    <!-- Submit button line -->
+
+  </div>
+  <div class="col-sm-3">
+    <div class="row">
+      <%= link_to("Previous", {:action => 'show', :book_id => @page.book.id, :id => @page.previous_page_id}, :class => 'btn btn-primary') %>
+      <%= link_to("Next", {:action => 'show', :book_id => @page.book.id, :id => @page.next_page_id}, :class => 'btn btn-primary') %>
+      <%= link_to("Done", {:action => 'index', :book_id => @page.book.id}, :class => 'btn btn-primary') %>
+    </div>
+  </div>

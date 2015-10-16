@@ -1,0 +1,30 @@
+<div class="pages delete">
+  <div class="row">
+    <%= error_messages_for(@page) %>
+  </div>
+  <h2>Delete Page</h2>
+
+
+    <%= form_for(:page, :url => {:action => 'destroy', :book_id => @page.book.id, :id => @page.id}, :html => { :role => "form", :class => "form-horizontal" }) do |f| %>
+
+      <!-- Main form -->
+      <div class="row">
+        <div class="col-sm-5">
+
+
+            <div class="alert alert-warning">
+              You are about to delete <strong>page number <%= @page.position %></strong> from <%= @page.book.name %>.
+              Proceed?
+            </div>
+
+        </div>
+
+      </div>
+
+      <!-- Submit button line -->
+      <div class="row">
+        <%= render(:partial => "submitbtn", :locals => {:f => f, :cancel_action => 'index', :book_id => @page.book.id, :submit_text => "Yup. Delete it."}) %>
+      </div>
+    <% end %>
+
+</div>

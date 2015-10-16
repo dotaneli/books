@@ -1,0 +1,31 @@
+<% @page_title = "Pages" %>
+<div class="pages index">
+  <div class="row">
+    <%= error_messages_for(@page) %>
+  </div>
+  <h2>Pages in <strong><%= @book.name %></strong></h2>
+
+  <div class="container">
+     <ul class="row list-unstyled">
+       <% @pages.each do |page| %>
+          <li class="col-lg-3 col-md-3 col-sm-4 col-xs-6 text-center">
+              <div class="center-block" style="vertical-align:middle; font-size:150%"><%= page.position %></div>
+              <div class="center-block" style="vertical-align:middle"><%= image_tag page.page_image.url(:medium) %></div>
+
+              <div class="center-block action" style="vertical-align:middle">
+                <div class="btn-group">
+                  <%= link_to("Show", {:action => 'show', :book_id => @book.id, :id => page.id}, :class => 'btn btn-primary') %>
+                  <%= link_to("Edit", {:action => 'edit', :book_id => @book.id, :id => page.id, :is_edit => "true"}, :class => 'btn btn-primary') %>
+                  <%= link_to("Delete", {:action => 'delete', :book_id => @book.id, :id => page.id}, :class => 'btn btn-primary') %>
+                </div>
+
+              </div>
+          </li>
+       <% end %>
+     </ul>
+</div>
+
+  <%= link_to "Add a new page", {:action => 'new', :book_id => @book.id, :is_edit => "false"}, :class => 'btn btn-primary' %>
+  <br/>
+  <br/>
+</div>

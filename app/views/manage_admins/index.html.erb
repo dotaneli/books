@@ -1,0 +1,31 @@
+<% @page_title = "Administrators" %>
+<div class="admins index">
+  <div class="row">
+    <%= error_messages_for(@admin) %>
+  </div>
+  <h2>Administratos</h2>
+
+  <table class="table table-hover table-bordered" summary="Administratos List">
+    <tr class="header">
+      <th>&nbsp;</th>
+      <th>user's email address</th>
+      <th>Action</th>
+    </tr>
+
+    <% @admins.each do |admin| %>
+    <tr>
+      <td style="vertical-align:middle"><%= admin.id %></td>
+      <td style="vertical-align:middle"><%= admin.email %></td>
+      <td class="action" style="vertical-align:middle">
+        <div class="btn-group">
+          <%= link_to("Edit", edit_admin_registration_path, :id => admin.id, :class => 'btn btn-primary') %>
+          <%= link_to("Delete", {:controller => 'manage_admins', :action => 'delete', :id => admin.id}, :class => 'btn btn-primary') %>
+        </div>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+  <%= link_to "Add an administrator", {:action => 'new'}, :class => 'btn btn-primary' %>
+  <br/>
+  <br/>
+</div>

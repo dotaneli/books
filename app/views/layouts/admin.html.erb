@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Books</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+
+  <div class="container">
+    <div class="navbar header">
+      <ul class="nav navbar-fixed-top nav-tabs">
+        <li><%= link_to "Manage Books", {:controller => 'books', :action => 'index'}, :class => 'btn' %></li>
+        <li><%= link_to "Manage Users", 'index', :class => 'btn' %></li>
+        <li><%= link_to "Manage Adminsitrators", {:controller => 'manage_admins', :action => 'index'}, :class => 'btn' %></li>
+        <li><%= link_to "Logout", {:controller => 'admins', :action => 'sign_out'}, :class => 'btn' %></li>
+      </ul>
+    </div>
+    <div class="row">
+      <% if !flash[:notice].blank? %>
+        <div class="alert alert-info">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong><%= flash[:notice] %></strong>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <%= yield %>
+    </div>
+  </div>
+  </body>
+</html>

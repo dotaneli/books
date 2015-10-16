@@ -1,0 +1,30 @@
+<div class="books delete">
+  <div class="row">
+    <%= error_messages_for(@book) %>
+  </div>
+  <h2>Delete Book</h2>
+
+
+    <%= form_for(:book, :url => {:action => 'destroy', :id => @book.id}, :html => { :role => "form", :class => "form-horizontal" }) do |f| %>
+
+      <!-- Main form -->
+      <div class="row">
+        <div class="col-sm-5">
+
+
+            <div class="alert alert-warning">
+              You are about to delete the book <strong><%= @book.name %></strong> with all of its <%= @book.number_of_pages %> pages.
+              Proceed?
+            </div>
+
+        </div>
+
+      </div>
+
+      <!-- Submit button line -->
+      <div class="row">
+        <%= render(:partial => "submitbtn", :locals => {:f => f, :cancel_action => 'index', :submit_text => "Yup. Delete it."}) %>
+      </div>
+    <% end %>
+
+</div>

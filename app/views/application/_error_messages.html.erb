@@ -1,0 +1,14 @@
+<% if object && object.errors.size > 0 %>
+  <div class="col-sm-5">
+    <div class="form-group">
+        <% object.errors.full_messages.each do |msg| %>
+          <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong><%= msg %></strong>
+          </div>
+        <% end %>
+    </div>
+  </div>
+  <div class="col-sm-7">
+  </div>
+<% end %>
