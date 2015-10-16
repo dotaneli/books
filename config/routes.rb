@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'pages/edit'
 
-  root 'books#index'
+
 
   get 'pages/index'
 
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :users
 
-  match ':controller(/:action(/:id))', :via => [:get, :post]  
+  match ':controller(/:action(/:id))', :via => [:get, :post]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -95,4 +95,8 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  Books::Application.routes.draw do
+    root 'books#index'
+  end
 end
